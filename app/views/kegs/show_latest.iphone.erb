@@ -1,0 +1,12 @@
+<div class="panel" title="Current Keg" selected="true">
+<h2>Keg as of <%= @keg.created_at.localtime %> </h2>
+<p>Current Weight: <%= @keg.kegweight %></p>
+<p>Temperature: <%= @keg.kegtemp %></p>
+
+<p>Average weight: <%= @kegaverage.to_int %>
+
+<%# f = Image.new(100,100) { self.background_color = "red" } %>
+<%=  %>
+<p><%= link_to "back", :action => 'index' %></p>
+
+</div>

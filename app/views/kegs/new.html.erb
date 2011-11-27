@@ -1,0 +1,18 @@
+<h1>Add a new Keg Weight and Temp</h1>
+
+<%= error_messages_for :keg %>
+
+
+<% form_for :keg, :url => {:action => :create} do |f| -%>
+  <p>
+  	<%= f.label :kegweight, "Keg Weight" %> <br />
+	<%= f.text_field :kegweight %>
+  </p>
+  <p>
+  	<%= f.label :kegtemp, "Keg Temperature" %> <br />
+	<%= f.text_field :kegtemp %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end -%>
+
+<p><%= link_to "back", :action=> 'index' %></p>

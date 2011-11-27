@@ -1,0 +1,5 @@
+<h1>Keg Main</h1>
+<ul>
+	<li><%= link_to "Add Keg Weight", :action => 'new' %></li>
+	<li><%= link_to "View Current Keg", :action => 'show_latest' %></li>
+</ul>
