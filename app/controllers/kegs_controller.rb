@@ -38,6 +38,7 @@ class KegsController < ApplicationController
     kegvalue = kegvalue * (graphmax/(kegfull-kegempty))
     #f = Image.new(100,100) { self.background_color = "red" }
     kegimage = Magick::Image.read('Cornelius_Keg.jpg').first
+     # width, height, x, y, text
     gc = Draw.new
     gc.opacity("50%")
     gc.fill('#CCB000')
@@ -46,9 +47,17 @@ class KegsController < ApplicationController
       height = 256-i
       gc.ellipse(54, height, 45, 12, 0, 360)
     end
-     # width, height, x, y, text
+
     pints = 40.0*kegpercent/100.0
-    gc.annotate(kegimage, 50, 40, 30, (200-kegvalue), pints.round.to_s + " Pints left") {
+    if (kegpercent > 50)
+	subvalue = 300
+    else
+	subvalue = 200
+    end
+    akeg = Magick::Image.read('Cornelius_Keg.jpg').first
+    gc.draw(akeg)
+    kt = Draw.new
+    kt.annotate(akeg, 50, 40, 30, (subvalue-kegvalue), pints.round.to_s + " Pints left") {
     self.font_family = 'Helvetica'
     self.fill = 'black'
     self.stroke = 'transparent'
@@ -56,7 +65,7 @@ class KegsController < ApplicationController
     self.font_weight = BoldWeight
     self.gravity = NorthGravity
    }
-    gc.annotate(kegimage, 50, 40, 35, (220-kegvalue), kegpercent.round.to_s + "%") {
+    kt.annotate(akeg, 50, 40, 35, ((subvalue+20)-kegvalue), kegpercent.round.to_s + "%") {
     self.font_family = 'Helvetica'
     self.fill = 'black'
     self.stroke = 'transparent'
@@ -64,10 +73,11 @@ class KegsController < ApplicationController
     self.font_weight = BoldWeight
     self.gravity = NorthGravity
     }
+    keg = kegimage.composite(akeg, 0, 0, OverCompositeOp)
+    #gc.draw(akeg)
 
-    gc.draw(kegimage)
-
-    send_data(kegimage.to_blob,  :disposition => 'inline', :type => 'image/jpeg')
+    #gc.draw(akeg)
+    send_data(akeg.to_blob,  :disposition => 'inline', :type => 'image/jpeg')
 
   end
   def show_stats
