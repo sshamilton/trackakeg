@@ -20,6 +20,6 @@ production:
   adapter: mysql
   database: kegerator
   username: kegerator
-  password: k3gs3v3r
+  password: k3git
   pool: 5
   timeout: 5000
