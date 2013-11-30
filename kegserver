@@ -1,11 +1,12 @@
 #!/usr/bin/python
 import sys
 sys.path.append('/usr/local/lib/python2.7/')
-from xbee_api import *
+from xbee import ZigBee
 import MySQLdb
+import serial
 
 ################################################
-class myXbeeApi(XbeeApi):
+class myXbeeApi(ZigBee):
 #make the database connection
 	
 	def onData(self,pkg):
@@ -40,6 +41,6 @@ class myXbeeApi(XbeeApi):
 			
 ################################################
 
-api=myXbeeApi("/dev/ttyUSB0",9600)
+api=myXbeeApi("/dev/ttyUSB3",9600)
 
 	

@@ -1,0 +1,25 @@
+<%= form_for(@keg) do |f| %>
+  <% if @keg.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@keg.errors.count, "error") %> prohibited this keg from being saved:</h2>
+
+      <ul>
+      <% @keg.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :kegweight %><br>
+    <%= f.number_field :kegweight %>
+  </div>
+  <div class="field">
+    <%= f.label :kegtemp %><br>
+    <%= f.text_field :kegtemp %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
