@@ -1,28 +1,24 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Track-A-Keg!
 
-Things you may want to cover:
+This is a simple Ruby on Rails 4 application that utilizes Imagemagick (Rmagick)
+in order to create a graphical depiction of a cornelius (soda) keg and how
+much beer or soda is in the keg.  It also computes the number of pints left
+in a keg.  Since a 5 gallon keg has about 40 pints, it simply divides up the
+keg into 40 pint units.
 
-* Ruby version
+The backend python script included (kegserver) is what should be running
+in order to receive values from the xbee and put it into the database.
 
-* System dependencies
+The rmagick gem is required for this to work, and all the dependencies
+that go along with it.
 
-* Configuration
+I'm considering using HTML 5 canvas, but we'll have to wait for all the browsers
+to support it first.
 
-* Database creation
+Next modification will be to add in some jquery-mobile for mobile devices!
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Go on over to http://trackakeg.mashwp.org to see it in action!
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
